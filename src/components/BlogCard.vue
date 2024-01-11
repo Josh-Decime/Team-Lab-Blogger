@@ -4,6 +4,9 @@
             <img :src="blog.imgUrl" :alt="blog.title" class="blog-image">
             <h2> {{ blog.title }} </h2>
             <span> {{ blog.body }} </span>
+            <router-link :to="{ name: 'Profile', params: { profileId: blog.creatorId } }">
+                <img class="profile-pic" :src="blog.creator.picture" alt="">
+            </router-link>
         </div>
     </section>
 </template>
@@ -22,7 +25,7 @@ export default {
         return {
 
         }
-    }
+    },
 };
 </script>
 
@@ -32,5 +35,10 @@ export default {
     height: 15vh;
     width: 15vh;
     object-fit: cover;
+}
+
+.profile-pic {
+    height: 8vh;
+    width: 8vh;
 }
 </style>
