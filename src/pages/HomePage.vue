@@ -1,5 +1,7 @@
 <template>
-  <BlogForm></BlogForm>
+  <section>
+    <BlogForm />
+  </section>
   <section class="">
     <div v-for="blog in blogs" class="row">
       <BlogCard :blog="blog" />
