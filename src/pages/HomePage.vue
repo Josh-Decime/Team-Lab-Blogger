@@ -1,20 +1,31 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <div class="home-card p-5 card align-items-center shadow rounded elevation-3">
-      <img src="https://bcw.blob.core.windows.net/public/img/8600856373152463" alt="CodeWorks Logo"
-        class="rounded-circle">
-      <h1 class="my-5 bg-dark text-white p-3 rounded text-center">
-        Vue 3 Starter
-      </h1>
-    </div>
-  </div>
+  <div v-for="blog in blogs"> WOOOOOO </div>
 </template>
 
 <script>
+import { computed, onMounted } from 'vue';
+import Pop from '../utils/Pop.js';
+import { blogService } from '../services/BlogService.js';
+import { AppState } from '../AppState.js'
+
+
 export default {
   setup() {
+    async function getBlogs() {
+      try {
+        await blogService.getBlogs()
+      } catch (error) {
+        Pop.error(error)
+      }
+    }
+
+
+    onMounted(() => {
+      getBlogs()
+    })
+
     return {
-      
+      blogs: computed(() => AppState.blogs)
     }
   }
 }
