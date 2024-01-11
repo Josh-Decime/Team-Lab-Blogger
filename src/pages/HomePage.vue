@@ -1,5 +1,9 @@
 <template>
-  <div v-for="blog in blogs"> WOOOOOO </div>
+  <section class="row">
+    <div v-for="blog in blogs">
+      <BlogCard :blog="blog" />
+    </div>
+  </section>
 </template>
 
 <script>
@@ -7,27 +11,27 @@ import { computed, onMounted } from 'vue';
 import Pop from '../utils/Pop.js';
 import { blogService } from '../services/BlogService.js';
 import { AppState } from '../AppState.js'
+import BlogCard from '../components/BlogCard.vue';
 
 
 export default {
   setup() {
     async function getBlogs() {
       try {
-        await blogService.getBlogs()
-      } catch (error) {
-        Pop.error(error)
+        await blogService.getBlogs();
+      }
+      catch (error) {
+        Pop.error(error);
       }
     }
-
-
     onMounted(() => {
-      getBlogs()
-    })
-
+      getBlogs();
+    });
     return {
       blogs: computed(() => AppState.blogs)
-    }
-  }
+    };
+  },
+  components: { BlogCard }
 }
 </script>
 
