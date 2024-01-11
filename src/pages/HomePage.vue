@@ -1,4 +1,5 @@
 <template>
+  <BlogForm></BlogForm>
   <section class="">
     <div v-for="blog in blogs" class="row">
       <BlogCard :blog="blog" />
@@ -12,6 +13,7 @@ import Pop from '../utils/Pop.js';
 import { blogService } from '../services/BlogService.js';
 import { AppState } from '../AppState.js'
 import BlogCard from '../components/BlogCard.vue';
+import BlogForm from '../components/BlogForm.vue';
 
 
 export default {
@@ -31,7 +33,7 @@ export default {
       blogs: computed(() => AppState.blogs)
     };
   },
-  components: { BlogCard }
+  components: { BlogCard, BlogForm }
 }
 </script>
 
