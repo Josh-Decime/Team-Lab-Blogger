@@ -1,7 +1,9 @@
 <template>
-    <section class="col-4">
+    <section class="col-6">
         <div class="card">
-            <img :src="blog.imgUrl" alt="Blog image" class="blog-image">
+            <img :src="blog.imgUrl" :alt="blog.title" class="blog-image">
+            <h2> {{ blog.title }} </h2>
+            <span> {{ blog.body }} </span>
         </div>
     </section>
 </template>

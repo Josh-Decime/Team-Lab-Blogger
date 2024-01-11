@@ -1,6 +1,6 @@
 <template>
-  <section class="row">
-    <div v-for="blog in blogs">
+  <section class="">
+    <div v-for="blog in blogs" class="row">
       <BlogCard :blog="blog" />
     </div>
   </section>
